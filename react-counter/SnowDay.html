@@ -31,21 +31,38 @@
      <script type="text/babel">
 
      	class Snow extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {name: "Claudia"}
+        }
+
      		render() {
      		return (
                <div>
-                    <h1>Snow Day!</h1>
-                    <div class='snowflake'>*</div>
-                    <div class='snowflake'>*</div>
-                    <div class='snowflake'>*</div>
-                    <div class='snowflake'>*</div>
+                    <h1>{this.state.name}'s {this.props.label}!</h1>
+                    <div className={this.props.class}>{this.props.flake}</div>
+                    <div className={this.props.class}>{this.props.flake}</div>
+                    <div className={this.props.class}>{this.props.flake}</div>
+                    <div className={this.props.class}>{this.props.flake}</div>
                </div>     
                );
      	}
      }
+
+      const snoflake = {
+        class: "snowflake",
+        flake: "*",
+      }
+
+      Snow.defaultProps = {
+        label: "Snow Day"
+      }
+
           ReactDOM.render(
-          <Snow />, document.getElementById('flake')
+          <Snow class={snoflake.class} flake={snoflake.flake} />, document.getElementById('flake')
      );
+
+
      </script>
 </body>
 </html>
